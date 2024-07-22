@@ -68,6 +68,7 @@ object in situation: outlet;
 object name in situation: outlet_1
 object manipulated by robot: vacuum_1;
 '''
+
 situation_objectName_concrete = extract_objectName_inSituation(path_plan_init, situation_object)
 manipulation_objectName_concrete = extract_objectName_inManipulation(path_plan_init, situation_action)
 
@@ -123,6 +124,7 @@ while action_index < len(plan_init) and (not result_monitor) and (not signal_tra
       else:
         continue
 
+
 print('--------------------- Add action constraint ---------------------')
 #@title Add action constraint {display-mode: "form"}
 '''
@@ -140,6 +142,8 @@ if result_monitor:
   except:
     exist_plan_constraint = False
     print('!Note: No plan is found after constraint is added!')
+
+
 
 print('--------------------- Add action effect by using other objects ---------------------')
 #@title Add action effect by using other objects {display-mode: "form"}

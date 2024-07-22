@@ -1,4 +1,5 @@
-
+from utils import *
+import numpy as np
 #@title Situation dataset {display-mode: "form"}
 def situation_simulator(task_id, debug, debug_situation_index):
   if task_id == 1:

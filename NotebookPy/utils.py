@@ -1,3 +1,5 @@
+import openai
+
 print('--------------------- Utils ---------------------')
 #@title Utils {display-mode: "form"}
 openai.api_key = api_key
