@@ -1,3 +1,6 @@
+# -*- coding: UTF-8 -*-
+
+
 print('--------------------- Customized parameters ---------------------')
 
 api_key = '' #@param {type:"string"}
@@ -30,7 +33,9 @@ ratio_1object = "0.7" #@param ["0.75"] {allow-input: true}
 ratio_1object = float(ratio_1object)
 
 
-print('--------------------- Import third-party packages ---------------------')
+print('--------------------- Setup ---------------------')
+# Import third-party packages
+
 import openai
 import random
 import getpass
@@ -46,14 +51,32 @@ import os
 import gc
 import sys
 
-print('--------------------- Utils ---------------------')
+
+# Install pddl and its planner
+
+#  Utils
 from utils import *
 
-print('--------------------- Situation dataset ---------------------')
+#  Situation dataset
 from situation_dataset import *
 
-print('--------------------- Rule-based action translator ---------------------')
+# Rule-based action translator
 from rule_based_translator import *
+
+
+
+print('--------------------- PDDL-based task planning ---------------------')
+
+# Define constants for all tasks
+from pddl_based_planning import *
+
+# Define actions, domain and problem for tasks
+from task1_actions_domain_problem import *
+
+# Write domain and problem, and run planner
+from write_domain_planning import *
+
+
 
 
 print('--------------------- Simulate a situation ---------------------')
@@ -93,8 +116,10 @@ print('object manipulated by robot:', manipulation_objectName_concrete)
 # print('opposite situation:', situation_opp)
 
 
+
 print('--------------------- Plan Monitor & Knowledge Extractor ---------------------')
-print('--------------------- Check action feasibility under a situation ---------------------')
+
+#  Check action feasibility under a situation
 #@title Check action feasibility under a situation {display-mode: "form"}
 action_index = 0
 result_monitor = False  # False: one action cannot be executed
@@ -125,7 +150,7 @@ while action_index < len(plan_init) and (not result_monitor) and (not signal_tra
         continue
 
 
-print('--------------------- Add action constraint ---------------------')
+#  Add action constraint
 #@title Add action constraint {display-mode: "form"}
 '''
 # if plan cannot be executed, augment the robot’s action knowledge with task-oriented common sense
@@ -145,7 +170,8 @@ if result_monitor:
 
 
 
-print('--------------------- Add action effect by using other objects ---------------------')
+
+# Add action effect by using other objects
 #@title Add action effect by using other objects {display-mode: "form"}
 '''
 # if plan under constraint cannot be executed, augment the robot’s action knowledge with task-oriented common sense
@@ -181,7 +207,10 @@ if result_monitor and not exist_plan_constraint:
     exist_plan_object = False
     print('!Note: No new object can be used to solve the situation!')
 
-print('--------------------- Add action effect by using other appliance ---------------------')
+
+
+
+# Add action effect by using other appliance
 #@title Add action effect by using other appliance {display-mode: "form"}
 '''
 # if plan under constraint cannot be executed, augment the robot’s action knowledge with task-oriented common sense
